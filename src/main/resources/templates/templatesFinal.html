@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Введите название продукта</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+
+<div class="containerm">
+  <h1>Введите название продукта</h1>
+  <form action="/templates/final" method="post">
+    <!-- Ваши поля ввода здесь -->
+    <input type="text" name="idMaterials" />
+    <input type="text" name="minAmount" />
+    <input type="text" name="templateName" />
+    <input type="text" name="templateSize" />
+
+    <input type="submit" value="Отправить" />
+  </form>
+</div>
+
+<!--<div th:insert="block/footer :: footer"></div>-->
+</body>
+</html>

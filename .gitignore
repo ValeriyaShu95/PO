@@ -1,0 +1,8 @@
+# Игнорировать файлы конфигурации
+/application.properties
+/application.yml
+
+# Игнорировать файлы с конфиденциальной информацией
+/secrets/
+# Project exclude paths
+/target/

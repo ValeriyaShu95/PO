@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <style>
+.seldiv {
+  background: #415665;
+  height: 75px;
+  width:200px;
+  border-radius: 15px;
+  padding:20px;
+  font-size:22px;
+  color:#fff;
+}
+</style>
+
+    <title>Введите название продукта и граммы</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div class="seldiv">
+    <label>Веберите, что вы хотите напечатать: </label><select id="selectvalue">
+    <option>визитка</option>
+    <option>буклет</option>
+</select>
+
+
+
+        <form action="/templates/final" method="post">
+            <!-- Ваши поля ввода здесь -->
+            <input type="text" name="idMaterials" />
+            <input type="text" name="minAmount" />
+            <input type="text" name="templateName" />
+            <input type="text" name="templateSize" />
+
+            <input type="submit" value="Отправить" />
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+<body>
+
+<div class="containerm">
+
+    <h1>Введите название продукта и граммы</h1>
+
+    <table>
+
+
+        <tr th:each="name : ${listName}">
+            <td th:text="${name}"></td>
+        </tr>
+    </table>
+
+    <form action="/products/add/by/client" method="post">
+        <input type="text" name="nameOfProduct" placeholder="Введите название продукта" class="form-control">
+        <input type="text" name="grams" placeholder="Введите количество продутка (в граммах)" class="form-control">
+        <button type="submit" class="btn yoyoy">Внести данные в таблицу</button>
+    </form>
+</div>
+
+<!--<div th:insert="block/footer :: footer"></div>-->
+</body>
+</html>
