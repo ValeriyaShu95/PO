@@ -7,11 +7,10 @@ import jakarta.persistence.*;
 
 public class Size {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSize;
 
     private String type; // A0?
-    private int size;
+
     private int widh;
     private int length;
 
@@ -19,9 +18,9 @@ public class Size {
     public Size() {
     }
 
-    public Size(String type, int size, int widh, int length){
+    public Size(String type, long idSize, int widh, int length){
         this.type = type;
-        this.size = size;
+        this.idSize = idSize;
         this.widh = widh;
         this.length = length;
     }
@@ -35,12 +34,27 @@ public class Size {
         this.type = type;
     }
 
-    public int getSize() {
-        return size;
+    public Long getIdSize() {
+        return idSize;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setIdSize(Long idSize) {
+        this.idSize = idSize;
     }
 
+    public int getWidh() {
+        return widh;
+    }
+
+    public void setWidh(int widh) {
+        this.widh = widh;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
 }

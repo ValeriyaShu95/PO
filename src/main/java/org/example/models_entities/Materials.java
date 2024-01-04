@@ -15,15 +15,15 @@ public class Materials {
     private Long idMaterial;
 
     private String nameMaterial;    // бумага, картон и тд
-    private int sizeMaterial;           // размер
+    private int idSizeMaterial;           // размер
     private BigDecimal priceMaterial; // цена материала
 
     public Materials() {
     }
 
-    public Materials(String nameMaterial, int sizeMaterial, BigDecimal priceMaterial) {
+    public Materials(String nameMaterial, int idSizeMaterial, BigDecimal priceMaterial) {
         this.nameMaterial = nameMaterial;
-        this.sizeMaterial = sizeMaterial;
+        this.idSizeMaterial = idSizeMaterial;
         this.priceMaterial = priceMaterial;
     }
 
@@ -35,12 +35,12 @@ public class Materials {
         this.nameMaterial = nameMaterial;
     }
 
-    public int getSizeMaterial() {
-        return sizeMaterial;
+    public int getIdSizeMaterial() {
+        return idSizeMaterial;
     }
 
-    public void setSizeMaterial(int sizeMaterial) {
-        this.sizeMaterial = sizeMaterial;
+    public void setSizeMaterial(int idSizeMaterial) {
+        this.idSizeMaterial = idSizeMaterial;
     }
 
     public BigDecimal getPriceMaterial() {
@@ -49,5 +49,13 @@ public class Materials {
 
     public void setPriceMaterial(BigDecimal priceMaterial) {
         this.priceMaterial = priceMaterial;
+    }
+
+    public Long getIdMaterial() {
+        return idMaterial;
+    }
+
+    public void setIdMaterial(Long idMaterial) {
+        this.idMaterial = idMaterial;
     }
 }

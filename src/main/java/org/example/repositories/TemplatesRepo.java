@@ -6,3 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TemplatesRepo extends CrudRepository<Templates, Long> {
 }
+
+

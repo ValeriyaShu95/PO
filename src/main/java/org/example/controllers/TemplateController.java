@@ -32,8 +32,9 @@ public class TemplateController {
     @CrossOrigin(origins = "*")
     @GetMapping("/templates/chooseName")
     public List<Templates> nameChoose(Model model) {
+        System.out.println("1");
         List<Templates> nameList = (List<Templates>) templatesRepo.findAll();
-        System.out.println("Запрос!!!");
+        System.out.println("2");
         return nameList;
     }
 
@@ -50,8 +51,8 @@ public class TemplateController {
     public ResponseEntity<String> addTemplate(@RequestParam List<Long> idSize, @RequestParam List<Long> idMaterials,
                                               @RequestParam String nameTemplate) {
         try {
-            Templates templates = new Templates(idSize, idMaterials, nameTemplate);
-            templatesRepo.save(templates);
+            Templates t = new Templates(idSize, idMaterials, nameTemplate);
+            templatesRepo.save(t);
             return ResponseEntity.ok("Данные успешно добавлены!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

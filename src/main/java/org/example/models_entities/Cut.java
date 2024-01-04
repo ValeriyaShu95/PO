@@ -15,13 +15,13 @@ public class Cut {
 
     private BigDecimal cutPrice;
     private int amountCut;
-    private int sizeFrom; // от А0 до А10
-    private int sizeTo; // от А10 до А0
+    private long sizeFrom; // от А0 до А10
+    private long sizeTo; // от А10 до А0
 
     public Cut() {
     }
 
-    public Cut(BigDecimal cutPrice, int amountCut, int sizeFrom, int sizeTo) {
+    public Cut(BigDecimal cutPrice, int amountCut, long sizeFrom, long sizeTo) {
         this.cutPrice = cutPrice;
         this.amountCut = amountCut;
         this.sizeFrom = sizeFrom;
@@ -44,19 +44,27 @@ public class Cut {
         this.amountCut = amountCut;
     }
 
-    public int getSizeFrom() {
+    public long getSizeFrom() {
         return sizeFrom;
     }
 
-    public void setSizeFrom(int sizeFrom) {
+    public void setSizeFrom(long sizeFrom) {
         this.sizeFrom = sizeFrom;
     }
 
-    public int getSizeTo() {
+    public long getSizeTo() {
         return sizeTo;
     }
 
-    public void setSizeTo(int sizeTo) {
+    public void setSizeTo(long sizeTo) {
         this.sizeTo = sizeTo;
+    }
+
+    public Long getIdCut() {
+        return idCut;
+    }
+
+    public void setIdCut(Long idCut) {
+        this.idCut = idCut;
     }
 }

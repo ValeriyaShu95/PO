@@ -29,6 +29,13 @@ public class Templates {
         this.nameTemplate = nameTemplate;
     }
 
+//    public Templates(Long idTemplate, List<Long> idSize, List<Long> idMaterials, String nameTemplate) {
+//        this.idTemplate = idTemplate;
+//        this.idSize = idSize;
+//        this.idMaterials = idMaterials;
+//        this.nameTemplate = nameTemplate;
+//    }
+
     public List<Long> getIdSize() {
         return idSize;
     }
@@ -51,5 +58,13 @@ public class Templates {
 
     public void setNameTemplate(String nameTemplate) {
         this.nameTemplate = nameTemplate;
+    }
+
+    public Long getIdTemplate() {
+        return idTemplate;
+    }
+
+    public void setIdTemplate(Long idTemplate) {
+        this.idTemplate = idTemplate;
     }
 }

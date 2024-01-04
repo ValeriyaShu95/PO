@@ -35,7 +35,7 @@ public class CutController {
     @CrossOrigin(origins = "*")
     @PostMapping("/addCut")
     public ResponseEntity<String> addCut(@RequestParam BigDecimal cutPrice,
-                                         @RequestParam int amountCut, @RequestParam int sizeFrom, @RequestParam int sizeTo) {
+                                         @RequestParam int amountCut, @RequestParam long sizeFrom, @RequestParam long sizeTo) {
         try {
 
             Cut cut = new Cut (cutPrice, amountCut, sizeFrom, sizeTo);

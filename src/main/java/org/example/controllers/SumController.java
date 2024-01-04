@@ -29,24 +29,31 @@ public class SumController {
         this.templatesRepo = templatesRepo;
         this.cutRepo = cutRepo;
         this.printingRepo = printingRepo;
+
+
+
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/templates/sum")
-    private BigDecimal sum(@RequestParam long idTemplate, @RequestParam long idSize, @RequestParam long idMaterial,
+    @GetMapping("/templates/sum")
+    private BigDecimal sum(@RequestParam long idTemplate,
+                           @RequestParam long idSize,
+                           @RequestParam String nameMaterial,
                            @RequestParam int amount) {
-        BigDecimal priceMaterial = materialsRepo.findById(idMaterial).get().getPriceMaterial(); // цена материала
-        int cutAmount = cutRepo.findSizeToAndSizeFrom(4, sizeRepo.findById(idSize).get().getSize());
-        BigDecimal printing = printingRepo.findIdSize(idSize);
+        BigDecimal priceMaterial = materialsRepo.getPrice(nameMaterial, idSize); // получение цены по 2
+        // параметрам name и size
+        int cutAmount = cutRepo.findSizeFromAndSizeTo(4, idSize);
+        BigDecimal printingPrice = printingRepo.findPrintingPrice(idSize);
+        int cutAmountSquare = cutAmount * cutAmount;
 
-        long finalCutAmount = amount / cutAmount; // нужно умножать не amount, а кол-во листов А4
-        if (amount % cutAmount > 0){
-            finalCutAmount = finalCutAmount + cutAmount; // добавляем сколько раз нужно резать
+        long paperAmount = amount / cutAmountSquare;
+        if (amount % cutAmountSquare > 0){
+            paperAmount = paperAmount + 1;
         }
 
-        BigDecimal finalSum = priceMaterial.multiply(BigDecimal.valueOf(amount))
-                .add(BigDecimal.valueOf(cutAmount).multiply(BigDecimal.valueOf(amount)))
-                .add(printing.multiply(BigDecimal.valueOf(amount)));
+        BigDecimal finalSum = priceMaterial.multiply(BigDecimal.valueOf(paperAmount)) // стоимость материалов
+                .add(BigDecimal.valueOf(paperAmount*cutAmount)) // стоимость резки
+                .add(printingPrice.multiply(BigDecimal.valueOf(amount))); // стоимость печати
 
         return finalSum;
 

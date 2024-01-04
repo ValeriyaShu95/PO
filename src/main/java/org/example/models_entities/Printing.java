@@ -40,4 +40,13 @@ public class Printing {
     public void setIdSize(long idSize) {
         this.idSize = idSize;
     }
+
+
+    public Long getIdPrinting() {
+        return idPrinting;
+    }
+
+    public void setIdPrinting(Long idPrinting) {
+        this.idPrinting = idPrinting;
+    }
 }

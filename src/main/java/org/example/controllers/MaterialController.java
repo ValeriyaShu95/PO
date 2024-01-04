@@ -19,10 +19,13 @@ import java.util.List;
 @RestController
 public class MaterialController {
     private MaterialsRepo materialsRepo;
+    private final TemplatesRepo templatesRepo;
 
     @Autowired
-    public MaterialController(MaterialsRepo materialsRepo) {
+    public MaterialController(MaterialsRepo materialsRepo,
+                              TemplatesRepo templatesRepo) {
         this.materialsRepo = materialsRepo;
+        this.templatesRepo = templatesRepo;
     }
 
     @CrossOrigin(origins = "*")
@@ -34,11 +37,22 @@ public class MaterialController {
     }
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/templates/chooseExectMaterial")
+    public List<String> materialsChooseExect(@RequestParam Long idTemplate) {
+//        System.out.println("------   chooseExectMaterial " + idTemplate);
+        List<Long> idMaterialsList = templatesRepo.findById(idTemplate).get().getIdMaterials();
+//        System.out.println("------   idMaterialsList " + idMaterialsList);
+        List<String> materialsList = materialsRepo.exectMaterail(idMaterialsList);
+//        System.out.println("------   materialsList " + materialsList);
+        return materialsList;
+    }
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/addMaterials")
     public ResponseEntity<String> addMaterials(@RequestParam String nameMaterial,
-                                               @RequestParam int sizeMaterial, @RequestParam BigDecimal priceMaterial) {
+                                               @RequestParam int idSizeMaterial, @RequestParam BigDecimal priceMaterial) {
         try {
-            Materials materials = new Materials(nameMaterial, sizeMaterial, priceMaterial);
+            Materials materials = new Materials(nameMaterial, idSizeMaterial, priceMaterial);
             materialsRepo.save(materials);
             return ResponseEntity.ok("Данные успешно добавлены!");
         } catch (Exception e) {

@@ -12,5 +12,5 @@ import java.util.List;
  public interface CutRepo extends CrudRepository<Cut, Long> {
 
     @Query("SELECT c.amountCut FROM Cut c WHERE c.sizeFrom = :par1 AND c.sizeTo = :par2")
-    int findSizeToAndSizeFrom(int par1, int par2);
+    int findSizeFromAndSizeTo(long par1, long par2);
     }

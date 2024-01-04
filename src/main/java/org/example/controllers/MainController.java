@@ -23,15 +23,14 @@ public class MainController {
     public MainController (MaterialsRepo materialsRepo,
                             SizeRepo sizeRepo, TemplatesRepo templatesRepo ){
         this.materialsRepo = materialsRepo;
-
         this.sizeRepo = sizeRepo;
         this.templatesRepo = templatesRepo;
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "mainpage";
-    }
+//    @GetMapping("/")
+//    public String home() {
+//        return "mainpage";
+//    }
 
 
 
@@ -41,13 +40,10 @@ public class MainController {
 //        templatesRepo.save(templates);
 //        return "templatesFinal";
 //    }
-
-
-
-    @GetMapping("/templates/choose")
-    public String materialChoose(Model model) {
-        return "templatesChooseGet";
-    }
+//    @GetMapping("/templates/choose")
+//    public String materialChoose(Model model) {
+//        return "templatesChooseGet";
+//    }
 
 
 
